@@ -4,9 +4,13 @@ public class Item {
     private final String name;
     private final int earnedAmount;
 
-    public Item(String name, int earnedAmount) {
+    public Item(String name, int earnedAmount) throws IllegalArgumentException {
         this.name = name;
-        this.earnedAmount = earnedAmount;
+        if (earnedAmount > 0) {
+            this.earnedAmount = earnedAmount;
+        } else {
+            throw new IllegalArgumentException("Error! Earned amount must be greater than 0");
+        }
     }
 
     public String getName() {
